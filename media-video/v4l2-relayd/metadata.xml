@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>ben@thompson.org.uk</email>
+		<name>Benjamin Thompson</name>
+	</maintainer>
+	<longdescription>
+      Streaming relay for v4l2loopback using GStreamer
+    </longdescription>
+	<upstream>
+		<remote-id type="launchpad">https://git.launchpad.net/v4l2-relayd</remote-id>
+	</upstream>
+</pkgmetadata>

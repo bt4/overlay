@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+<title>0001-Fix-build-error-due-to-missing-cstdint.h.patch - nonfree/ipu6-camera-hal.git - ipu6-camera-hal</title>
+<meta name='generator' content='cgit '/>
+<meta name='robots' content='index, nofollow'/>
+<link rel='stylesheet' type='text/css' href='/cgit-data/cgit.css'/>
+<link rel='shortcut icon' href='/favicon.ico'/>
+<link rel='alternate' title='Atom feed' href='https://pkgs.rpmfusion.org/cgit/nonfree/ipu6-camera-hal.git/atom/0001-Fix-build-error-due-to-missing-cstdint.h.patch?h=master' type='application/atom+xml'/>
+<link rel='vcs-git' href='ssh://pkgs.rpmfusion.org/nonfree/ipu6-camera-hal.git' title='nonfree/ipu6-camera-hal.git Git repository'/>
+<link rel='vcs-git' href='https://pkgs.rpmfusion.org/git/nonfree/ipu6-camera-hal.git' title='nonfree/ipu6-camera-hal.git Git repository'/>
+</head>
+<body>
+<script src="https://apps.fedoraproject.org/fedmenu/js/jquery-1.11.2.min.js"></script>
+<script src="https://apps.fedoraproject.org/fedmenu/js/fedmenu.js"></script>
+
+<script>
+    var base = 'https://apps.fedoraproject.org/';
+    var tokens = window.location.href.split('/');
+  var repo = null;
+  if (tokens.length > 4 && tokens[4] != '') {
+    repo = tokens[4].split('.')[0];
+  }
+  fedmenu({
+      'url': base + 'js/data.js',
+      'mimeType': 'application/javascript',
+      'position': 'bottom-right',
+      'package': repo,
+  });
+</script>
+<div id='cgit'><table id='header'>
+<tr>
+<td class='logo' rowspan='2'><a href='/cgit/'><img src='/cgit-data/cgit.png' alt='cgit logo'/></a></td>
+<td class='main'><a href='/cgit/'>index</a> : <a title='nonfree/ipu6-camera-hal.git' href='/cgit/nonfree/ipu6-camera-hal.git/'>nonfree/ipu6-camera-hal.git</a></td><td class='form'><form method='get'>
+<select name='h' onchange='this.form.submit();'>
+<option value='f36'>f36</option>
+<option value='f37'>f37</option>
+<option value='f38'>f38</option>
+<option value='master' selected='selected'>master</option>
+</select> <input type='submit' value='switch'/></form></td></tr>
+<tr><td class='sub'>ipu6-camera-hal</td><td class='sub right'>root</td></tr></table>
+<table class='tabs'><tr><td>
+<a href='/cgit/nonfree/ipu6-camera-hal.git/'>summary</a><a href='/cgit/nonfree/ipu6-camera-hal.git/refs/'>refs</a><a href='/cgit/nonfree/ipu6-camera-hal.git/log/0001-Fix-build-error-due-to-missing-cstdint.h.patch'>log</a><a class='active' href='/cgit/nonfree/ipu6-camera-hal.git/tree/0001-Fix-build-error-due-to-missing-cstdint.h.patch'>tree</a><a href='/cgit/nonfree/ipu6-camera-hal.git/commit/0001-Fix-build-error-due-to-missing-cstdint.h.patch'>commit</a><a href='/cgit/nonfree/ipu6-camera-hal.git/diff/0001-Fix-build-error-due-to-missing-cstdint.h.patch'>diff</a><a href='/cgit/nonfree/ipu6-camera-hal.git/stats/0001-Fix-build-error-due-to-missing-cstdint.h.patch'>stats</a></td><td class='form'><form class='right' method='get' action='/cgit/nonfree/ipu6-camera-hal.git/log/0001-Fix-build-error-due-to-missing-cstdint.h.patch'>
+<select name='qt'>
+<option value='grep'>log msg</option>
+<option value='author'>author</option>
+<option value='committer'>committer</option>
+<option value='range'>range</option>
+</select>
+<input class='txt' type='search' size='10' name='q' value=''/>
+<input type='submit' value='search'/>
+</form>
+</td></tr></table>
+<div class='path'>path: <a href='/cgit/nonfree/ipu6-camera-hal.git/tree/'>root</a>/<a href='/cgit/nonfree/ipu6-camera-hal.git/tree/0001-Fix-build-error-due-to-missing-cstdint.h.patch'>0001-Fix-build-error-due-to-missing-cstdint.h.patch</a></div><div class='content'>blob: efd0acc5463156a1d63e62577361de7b386d2b56 (<a href='/cgit/nonfree/ipu6-camera-hal.git/plain/0001-Fix-build-error-due-to-missing-cstdint.h.patch'>plain</a>)
+<table summary='blob content' class='blob'>
+<tr><td class='linenumbers'><pre><a id='n1' href='#n1'>1</a>
+<a id='n2' href='#n2'>2</a>
+<a id='n3' href='#n3'>3</a>
+<a id='n4' href='#n4'>4</a>
+<a id='n5' href='#n5'>5</a>
+<a id='n6' href='#n6'>6</a>
+<a id='n7' href='#n7'>7</a>
+<a id='n8' href='#n8'>8</a>
+<a id='n9' href='#n9'>9</a>
+<a id='n10' href='#n10'>10</a>
+<a id='n11' href='#n11'>11</a>
+<a id='n12' href='#n12'>12</a>
+<a id='n13' href='#n13'>13</a>
+<a id='n14' href='#n14'>14</a>
+<a id='n15' href='#n15'>15</a>
+<a id='n16' href='#n16'>16</a>
+<a id='n17' href='#n17'>17</a>
+<a id='n18' href='#n18'>18</a>
+<a id='n19' href='#n19'>19</a>
+<a id='n20' href='#n20'>20</a>
+<a id='n21' href='#n21'>21</a>
+<a id='n22' href='#n22'>22</a>
+<a id='n23' href='#n23'>23</a>
+<a id='n24' href='#n24'>24</a>
+<a id='n25' href='#n25'>25</a>
+<a id='n26' href='#n26'>26</a>
+<a id='n27' href='#n27'>27</a>
+<a id='n28' href='#n28'>28</a>
+<a id='n29' href='#n29'>29</a>
+<a id='n30' href='#n30'>30</a>
+<a id='n31' href='#n31'>31</a>
+<a id='n32' href='#n32'>32</a>
+<a id='n33' href='#n33'>33</a>
+<a id='n34' href='#n34'>34</a>
+<a id='n35' href='#n35'>35</a>
+<a id='n36' href='#n36'>36</a>
+<a id='n37' href='#n37'>37</a>
+<a id='n38' href='#n38'>38</a>
+<a id='n39' href='#n39'>39</a>
+<a id='n40' href='#n40'>40</a>
+<a id='n41' href='#n41'>41</a>
+<a id='n42' href='#n42'>42</a>
+<a id='n43' href='#n43'>43</a>
+<a id='n44' href='#n44'>44</a>
+<a id='n45' href='#n45'>45</a>
+<a id='n46' href='#n46'>46</a>
+<a id='n47' href='#n47'>47</a>
+<a id='n48' href='#n48'>48</a>
+<a id='n49' href='#n49'>49</a>
+<a id='n50' href='#n50'>50</a>
+<a id='n51' href='#n51'>51</a>
+<a id='n52' href='#n52'>52</a>
+<a id='n53' href='#n53'>53</a>
+<a id='n54' href='#n54'>54</a>
+<a id='n55' href='#n55'>55</a>
+<a id='n56' href='#n56'>56</a>
+<a id='n57' href='#n57'>57</a>
+<a id='n58' href='#n58'>58</a>
+<a id='n59' href='#n59'>59</a>
+<a id='n60' href='#n60'>60</a>
+<a id='n61' href='#n61'>61</a>
+<a id='n62' href='#n62'>62</a>
+<a id='n63' href='#n63'>63</a>
+<a id='n64' href='#n64'>64</a>
+<a id='n65' href='#n65'>65</a>
+<a id='n66' href='#n66'>66</a>
+<a id='n67' href='#n67'>67</a>
+<a id='n68' href='#n68'>68</a>
+<a id='n69' href='#n69'>69</a>
+<a id='n70' href='#n70'>70</a>
+<a id='n71' href='#n71'>71</a>
+</pre></td>
+<td class='lines'><pre><code>From b4695c93e44bec2fe07ee6b863a64fcda81b8a29 Mon Sep 17 00:00:00 2001
+From: Hans de Goede &lt;hdegoede@redhat.com&gt;
+Date: Tue, 24 Jan 2023 15:32:08 +0100
+Subject: [PATCH] Fix build-error due to missing cstdint.h
+
+Fix the following build errors:
+
+In file included from src/platformdata/gc/IGraphConfig.h:19,
+                 from src/platformdata/gc/GraphUtils.h:18,
+                 from src/platformdata/gc/GraphUtils.cpp:18:
+src/platformdata/gc/HalStream.h:33:5: error: 'uint32_t' does not name a type
+   33 |     uint32_t width;
+      |     ^~~~~~~~
+src/platformdata/gc/HalStream.h:1:1: note: 'uint32_t' is defined in header '&lt;cstdint&gt;'; did you forget to '#include &lt;cstdint&gt;'?
+  +++ |+#include &lt;cstdint&gt;
+    1 | /*
+src/platformdata/gc/HalStream.h:34:5: error: 'uint32_t' does not name a type
+   34 |     uint32_t height;
+      |     ^~~~~~~~
+src/platformdata/gc/HalStream.h:34:5: note: 'uint32_t' is defined in header '&lt;cstdint&gt;'; did you forget to '#include &lt;cstdint&gt;'?
+src/platformdata/gc/HalStream.h:54:5: error: 'uint32_t' does not name a type
+   54 |     uint32_t width() const { return mWidth; }
+      |     ^~~~~~~~
+src/platformdata/gc/HalStream.h:54:5: note: 'uint32_t' is defined in header '&lt;cstdint&gt;'; did you forget to '#include &lt;cstdint&gt;'?
+src/platformdata/gc/HalStream.h:55:5: error: 'uint32_t' does not name a type
+   55 |     uint32_t height() const { return mHeight; }
+      |     ^~~~~~~~
+src/platformdata/gc/HalStream.h:55:5: note: 'uint32_t' is defined in header '&lt;cstdint&gt;'; did you forget to '#include &lt;cstdint&gt;'?
+src/platformdata/gc/HalStream.h:62:5: error: 'uint32_t' does not name a type
+   62 |     uint32_t mWidth;
+      |     ^~~~~~~~
+src/platformdata/gc/HalStream.h:62:5: note: 'uint32_t' is defined in header '&lt;cstdint&gt;'; did you forget to '#include &lt;cstdint&gt;'?
+src/platformdata/gc/HalStream.h:63:5: error: 'uint32_t' does not name a type
+   63 |     uint32_t mHeight;
+      |     ^~~~~~~~
+src/platformdata/gc/HalStream.h:63:5: note: 'uint32_t' is defined in header '&lt;cstdint&gt;'; did you forget to '#include &lt;cstdint&gt;'?
+src/platformdata/gc/HalStream.h: In constructor 'icamera::HalStream::HalStream(icamera::streamProps&amp;, void*)':
+src/platformdata/gc/HalStream.h:43:15: error: class 'icamera::HalStream' does not have any field named 'mWidth'
+   43 |             : mWidth(props.width),
+      |               ^~~~~~
+src/platformdata/gc/HalStream.h:43:28: error: 'struct icamera::streamProps' has no member named 'width'
+   43 |             : mWidth(props.width),
+      |                            ^~~~~
+src/platformdata/gc/HalStream.h:44:15: error: class 'icamera::HalStream' does not have any field named 'mHeight'
+   44 |               mHeight(props.height),
+      |               ^~~~~~~
+src/platformdata/gc/HalStream.h:44:29: error: 'struct icamera::streamProps' has no member named 'height'
+   44 |               mHeight(props.height),
+      |                             ^~~~~~
+
+Signed-off-by: Hans de Goede &lt;hdegoede@redhat.com&gt;
+---
+ src/platformdata/gc/HalStream.h | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/src/platformdata/gc/HalStream.h b/src/platformdata/gc/HalStream.h
+index 0393d62..eab6720 100644
+--- a/src/platformdata/gc/HalStream.h
++++ b/src/platformdata/gc/HalStream.h
+@@ -16,6 +16,8 @@
+ 
+ #pragma once
+ 
++#include &lt;cstdint&gt;
++
+ namespace icamera {
+ 
+ // Temporary solution
+-- 
+2.39.0
+
+</code></pre></td></tr></table>
+</div> <!-- class=content -->
+<div class='footer'>generated by <a href='https://git.zx2c4.com/cgit/about/'>cgit </a> (<a href='https://git-scm.com/'>git 2.34.1</a>) at 2023-06-02 13:07:16 +0000</div>
+</div> <!-- id=cgit -->
+</body>
+</html>

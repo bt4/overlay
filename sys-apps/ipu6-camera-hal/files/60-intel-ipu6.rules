@@ -1,0 +1,7 @@
+SUBSYSTEM=="pci", ATTR{vendor}=="0x8086", ATTR{device}=="0x9a19", RUN+="/bin/ln -sf /usr/lib64/ipu6/libcamhal.so /run/libcamhal.so"
+SUBSYSTEM=="pci", ATTR{vendor}=="0x8086", ATTR{device}=="0x465d", RUN+="/bin/ln -sf /usr/lib64/ipu6ep/libcamhal.so /run/libcamhal.so"
+SUBSYSTEM=="pci", ATTR{vendor}=="0x8086", ATTR{device}=="0x9a19", RUN+="/bin/ln -sf /usr/share/defaults/etc/ipu6/v4l2-relayd /run/v4l2-relayd"
+SUBSYSTEM=="pci", ATTR{vendor}=="0x8086", ATTR{device}=="0x465d", RUN+="/bin/ln -sf /usr/share/defaults/etc/ipu6ep/v4l2-relayd /run/v4l2-relayd"
+
+
+KERNEL=="ipu-psys0", TAG+="uaccess"

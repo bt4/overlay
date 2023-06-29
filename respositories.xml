@@ -1,0 +1,14 @@
+<?xml version="1.0" ?>
+<repositories version="1.0">
+  <repo quality="experimental" status="unofficial">
+    <name>bt4</name>
+      <description lang="en">Benjamin's Custom Gentoo Overlay.</description>
+        <homepage>https://github.com/bt4/overlay</homepage>
+        <owner type="person">
+            <name>Benjamin Thompson</name>
+            <email>ben@thompson.org.uk</email>
+        </owner>
+        <source type="git">git://github.com/bt4/overlay.git</source>
+        <feed>https://github.com/bt4/overlay/commits/master.atom</feed>
+  </repo>
+</repositories>
