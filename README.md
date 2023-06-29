@@ -6,8 +6,8 @@ This overlay contains some ebuilds I made to provide Intel IPU6 webcam support o
 
 First add the repository using eselect:
 ```
-root # eselect repository add bt4 git git://github.com/bt4/overlay.git
-root # emaint sync -r bt4 
+root # eselect repository add bt4 git https://github.com/bt4/overlay.git
+root # emaint sync -r bt4
 ```
 
 Next you need to emerge the following packages:
