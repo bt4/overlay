@@ -5,7 +5,7 @@ EAPI=8
 
 inherit cmake
 
-MY_COMMIT="cc0b859daeb5fdcdf23ed066ce0b6e313225fbb1"
+MY_COMMIT="a359c1e9e345061ec4149b1b384b7a452284935b"
 MY_SHORT_COMMIT=$(c=${MY_COMMIT}; echo ${c:0:7})
 MY_LIBDIR="/usr/lib64"
 
