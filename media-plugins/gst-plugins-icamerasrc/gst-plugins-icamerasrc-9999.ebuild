@@ -36,6 +36,7 @@ src_configure() {
 	#elog "$(tree .)"
 	export CHROME_SLIM_CAMHAL=ON
 	export STRIP_VIRTUAL_CHANNEL_CAMHAL=ON
+	export DEFAULT_CAMERA=0
 	econf
 }
 
