@@ -56,4 +56,14 @@ You can then start v4l2-relayd using systemd:
 root # systemctl enable v4l2-relayd
 root # systemctl start v4l2-relayd
 ```
+Depending on your hardware v4l2-relayd might not start with the default configuration. Run `systemctl status v4l2-relayd` to see if it works. If not, the configuration file at /etc/default/v4l2-relayd has to be edited.
+```
+# Example for some Dell XPS laptops
+CARD_LABEL="Intel MIPI Camera"
+```
+Run the following command to get a list of names of all devices:
+```
+$ cat /sys/devices/virtual/video4linux/video*/name
+```
+
 At this point you should can test the webcam in Firefox at: https://mozilla.github.io/webrtc-landing/gum_test.html
