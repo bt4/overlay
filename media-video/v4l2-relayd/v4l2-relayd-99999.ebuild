@@ -1,4 +1,4 @@
-# Copyright 1999-2023 Gentoo Authors
+# Copyright 1999-2024 Gentoo Authors
 # Distributed under the terms of the GNU General Public License v2
 
 EAPI=8
@@ -18,6 +18,8 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64"
 
+RDEPEND="media-plugins/gst-plugins-libpng"
+
 PATCHES=(
 	"${FILESDIR}/0001-Set-a-new-ID-offset-for-the-private-event.patch"
 )
@@ -28,7 +30,7 @@ src_prepare() {
 	sed -i "s|#WIDTH=1280|WIDTH=1280|g" data/etc/default/v4l2-relayd
 	sed -i "s|#HEIGHT=720|HEIGHT=720|g" data/etc/default/v4l2-relayd
 	sed -i "s|#FRAMERATE=30/1|FRAMERATE=30/1|g" data/etc/default/v4l2-relayd
-	sed -i "s|#CARD_LABEL=\"Virtual Camera\"|CARD_LABEL=\"Virtual Camera\"|g" data/etc/default/v4l2-relayd
+	sed -i "s|#CARD_LABEL=\"Virtual Camera\"|CARD_LABEL=\"Intel MIPI Camera\"|g" data/etc/default/v4l2-relayd
 	default
 	eautoreconf
 }
